@@ -1,5 +1,5 @@
 local event = {
-	title = 'Event',
+	title = '',
 	prepare = function() end, -- (optional) is used to compute title / result while event is in que
 	run = function() end, -- event's main action
 	restore = function() end, -- (optional) remove the effect after event has finished

@@ -1,13 +1,14 @@
+-- Receive a random item
+
 return {
 	title = 'Get item',
 	item = nil,
 	chance = 10,
 	prepare = function(self)
-			self.index = math.random(1, 580)
-			local name = Game.ItemsTxt[self.index].Name
-			self.title = 'x1 ' .. name
+			self.item = math.random(1, 580)
+			self.title = Game.ItemsTxt[self.item].Name
 		end,
 	run = function(self)
-			evt.GiveItem(index)
+			evt.GiveItem{Id = self.item}
 		end,
 }

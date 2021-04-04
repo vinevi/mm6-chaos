@@ -2,13 +2,9 @@ local status = {
 	timeleft = '',
 	titleCurrent = '',
 	titleNext = '',
-	maxTitleLength = 14,
+	maxTitleLength = 12,
 	whitespaceSymbol = ' ',
 }
-
-status.init = function(self)
-
-end
 
 status.update = function(self)
 	self.timeleft = self:formatTimeleft(chaosTimer.timer)
@@ -31,9 +27,10 @@ status.formatTitle = function(self, text, right)
 					title = padding .. title
 			end
 		else
-			remainder = math.abs(remainder)
+			remainder = math.abs(remainder - 3)
 			local stringEnd = length - remainder
 			title = string.sub(title, 0, stringEnd)
+			title = title .. '...'
 		end
 		return title
 	end

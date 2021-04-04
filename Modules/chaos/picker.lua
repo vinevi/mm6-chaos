@@ -5,7 +5,7 @@ local picker = {
 	chanceTable = {},
 	chanceSum = 0,
 	eventCurrent = BaseEvent:new(),
-	eventNext = BaseEvent:new(),
+	eventNext = BaseEvent:new{title = 'Start'},
 }
 
 picker.init = function(self)
@@ -19,8 +19,7 @@ picker.loadEvents = function(self)
 		local filename = util.getFilenameFromPath(path)
 		path = 'chaos.events.'  .. filename
 		local newEvent = require(path)
-		setmetatable(newEvent, newEvent)
-		newEvent.__index = BaseEvent
+		newEvent = BaseEvent:new(newEvent)
 		table.insert(events, newEvent)
 	end
 	self.events = events
@@ -40,7 +39,6 @@ end
 
 picker.pickEvent = function(self)
 	local value = math.random(0, self.chanceSum)
-	MessageBox(value)
 	local eventNext = self:findByChance(value)
 	self:setNextEvent(eventNext)
 end
@@ -49,16 +47,13 @@ picker.findByChance = function(self, value)
 	local valueLast = 0
 	for key,chance in pairs(self.chanceTable) do
 		if value >= valueLast and value <= chance then
-			MessageBox('key ' .. key)
-			return self.events[key]
+			return self.events[key]:new()
 		end
 		valueLast = value
 	end
 end
 
 picker.setNextEvent = function(self, eventNext)
-	MessageBox(eventNext.title)
-	eventNext = eventNext:new()
 	self.eventCurrent:restore()
 	self.eventCurrent = self.eventNext
 	self.eventCurrent:run()

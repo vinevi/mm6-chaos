@@ -5,4 +5,5 @@ util.getFilenameFromPath = function(path)
 	filename = filename:sub(0, #filename - 4)
 	return filename
 end
+
 return util

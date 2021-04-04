@@ -1,12 +1,12 @@
 local util = require('chaos.util')
 
+chaosStatus = require('chaos.status')
 chaosPicker = require('chaos.picker')
 chaosTimer = require('chaos.timer')
-chaosStatus = require('chaos.status')
+
 
 local chaos = {}
 function chaos.init(self)
-	chaosStatus:init()
 	chaosPicker:init()
 	chaosTimer:init()
 end

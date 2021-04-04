@@ -1,6 +1,6 @@
 local timer = {
 	timer = 0,
-	timerMax = 10,
+	timerMax = 3,
 }
 
 timer.init = function(self)
