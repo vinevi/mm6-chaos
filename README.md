@@ -8,7 +8,7 @@ The event itself is a table.
 All event properties are optional.
 The events can have 3 functions:
 
-  * prepare - is triggered when event appears in que. It is used to compute event's title and result if needed. For example to display the item name or amount of gold while the event is in que
+  * prepare - is triggered when event appears in que. It is used to compute event's title and result if needed. For example to display item name or amount of gold while the event is in que
   * run - main event function which is triggered when the timer reaches 0
   * restore - is triggered before the next event starts and is used to remove the effects of the event
 
