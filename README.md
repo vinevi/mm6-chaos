@@ -1,6 +1,6 @@
 # mm6-chaos
 
-An attempt to make something similar to Chaos Mod for Grand Theft Auto games but for Might & Magic VI. Based on https://github.com/GrayFace/MMExtension
+An attempt to make something similar to Chaos Mod for Grand Theft Auto games but for Might & Magic VI. Based on: https://github.com/GrayFace/MMExtension
 
 Events can be added without altering the core parts by adding new scripts to the modules/chaos/events directory
 
