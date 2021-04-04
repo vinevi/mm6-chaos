@@ -4,7 +4,6 @@ local event = {
 	run = function() end, -- event's main action
 	restore = function() end, -- (optional) remove the effect after event has finished
 	loop = false,
-	test = '123',
 	chance = 0,
 	new = function(self, o)
 			o = o or {}

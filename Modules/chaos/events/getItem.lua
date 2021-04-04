@@ -1,6 +1,7 @@
 return {
 	title = 'Get item',
 	item = nil,
+	chance = 10,
 	prepare = function(self)
 			self.index = math.random(1, 580)
 			local name = Game.ItemsTxt[self.index].Name
