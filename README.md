@@ -13,4 +13,5 @@ The events can have 3 functions:
   * restore - is triggered before the next event starts and is used to remove the effects of the event
 
 Events are picked based on their chance property. A ticket approach is used to determine the next event.
+
 Status bar is used to display the event information.
