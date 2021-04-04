@@ -1,6 +1,7 @@
 # mm6-chaos
 
 An attempt to make something similar to Chaos Mod for Grand Theft Auto games but for Might & Magic VI.
+
 Events can be added without altering the core parts by adding new scripts to the chaos/events directory
 
 The event itself is a table.
