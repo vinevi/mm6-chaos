@@ -1,18 +1,19 @@
-local util = require('chaos.util')
-
-chaosStatus = require('chaos.status')
-chaosPicker = require('chaos.picker')
-chaosTimer = require('chaos.timer')
-
+chaosStatus = require('chaos.core.status')
+chaosPicker = require('chaos.core.picker')
+chaosTimer = require('chaos.core.timer')
+chaosDebug = require('chaos.core.debug')
 
 local chaos = {}
 function chaos.init(self)
 	chaosPicker:init()
 	chaosTimer:init()
+	chaosDebug:init()
 end
 
 function chaos.onCycle(self)
-	chaosPicker:pickEvent()
+	chaosPicker:endCurrentEvent()
+	chaosPicker:advanceInQue()
+	chaosPicker:beginCurrentEvent()
 end
 
 function chaos.onTick(self)
@@ -20,4 +21,3 @@ function chaos.onTick(self)
 end
 
 return chaos
-

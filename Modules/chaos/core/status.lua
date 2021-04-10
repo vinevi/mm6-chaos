@@ -2,7 +2,7 @@ local status = {
 	timeleft = '',
 	titleCurrent = '',
 	titleNext = '',
-	maxTitleLength = 12,
+	maxTitleLength = 16,
 	whitespaceSymbol = ' ',
 }
 

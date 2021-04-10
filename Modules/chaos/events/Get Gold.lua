@@ -1,14 +1,14 @@
 -- Receive a random amount of gold
 
 return {
-	title = 'Get gold',
+	title = 'Get Gold',
 	chance = 10,
 	gold = 0,
-	prepare = function(self)
+	onQue = function(self)
 			self.gold = math.random(1, 1000)
 			self.title = '+' .. self.gold ..'g'
 		end,
-	run = function(self)
+	onBegin = function(self)
 			Party.AddGold(self.gold, 0)	
 		end,
 }
