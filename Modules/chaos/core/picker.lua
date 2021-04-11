@@ -1,5 +1,4 @@
-local util = require('chaos.util')
-local BaseEvent = require('chaos.event')
+local BaseEvent = require('chaos.core.event')
 local picker = {
 	events = {},
 	chanceTable = {},
@@ -15,10 +14,12 @@ end
 
 picker.loadEvents = function(self)
 	local events = {}
-	for path in _G.path.find(AppPath .. "scripts/modules/chaos/events/*.lua") do
-		local filename = util.getFilenameFromPath(path)
-		path = 'chaos.events.'  .. filename
-		local newEvent = require(path)
+	for s in path.find(AppPath .. "scripts/modules/chaos/events/*.lua") do
+		local filename = path.name(s)
+		filename = filename:sub(0, #filename - 4)
+		s = 'chaos.events.'  .. filename
+		local newEvent = require(s)
+		newEvent.filename = filename
 		newEvent = BaseEvent:new(newEvent)
 		table.insert(events, newEvent)
 	end
@@ -39,8 +40,8 @@ end
 
 picker.pickEvent = function(self)
 	local value = math.random(0, self.chanceSum)
-	local eventNext = self:findByChance(value)
-	self:setNextEvent(eventNext)
+	local event = self:findByChance(value)
+	return event
 end
 
 picker.findByChance = function(self, value)
@@ -53,12 +54,28 @@ picker.findByChance = function(self, value)
 	end
 end
 
-picker.setNextEvent = function(self, eventNext)
-	self.eventCurrent:restore()
+picker.findByFilename = function(self, filename)
+	for key,event in pairs(self.events) do
+		if(event.filename == filename) then
+			return event:new()
+		end
+	end
+	return false
+end
+
+picker.endCurrentEvent = function(self)
+	self.eventCurrent:onEnd()
+
+end
+
+picker.advanceInQue = function(self)
 	self.eventCurrent = self.eventNext
-	self.eventCurrent:run()
-	self.eventNext = eventNext
-	self.eventNext:prepare()
+	self.eventNext = self:pickEvent()
+	self.eventNext:onQue()
+end
+
+picker.beginCurrentEvent = function(self)
+	self.eventCurrent:onBegin()
 end
 
 return picker
