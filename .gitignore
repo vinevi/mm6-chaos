@@ -1,11 +1,12 @@
 /*
 
-!README.md
-!.gitignore
-
 !/General
 /General/*
 !/General/chaos.lua
 
 !/Modules/chaos/
 /Modules/*
+!/Modules/chaos/events/*
+
+!README.md
+!.gitignore
