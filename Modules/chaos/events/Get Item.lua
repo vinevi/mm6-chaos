@@ -1,7 +1,6 @@
--- Receive a random item
-
 return {
 	title = 'Get Item',
+	description = 'Get a random item',
 	chance = 10,
 	item = nil,
 	onQue = function(self)

@@ -1,5 +1,5 @@
 local debug = {
-	eventFilename = 'Growing Speed',
+	eventFilename = 'Test',
 	event = {},
 	began = false,
 }
@@ -35,10 +35,20 @@ debug.init = function(self)
 	end
 end
 
-debug.printChanceTable = function(self)
+debug.chances = function(self)
 	if(chaosPicker) then
 		for key,chance in pairs(chaosPicker.chanceTable) do
 			print(chance .. ' : ' .. chaosPicker.events[key].filename)
+		end
+	end
+end
+
+debug.events = function(self)
+	if(chaosPicker) then
+		for key,event in pairs(chaosPicker.events) do
+			local title = event.title or '...'
+			local description = event.description or '...'
+			print(title .. ' - ' .. description)
 		end
 	end
 end

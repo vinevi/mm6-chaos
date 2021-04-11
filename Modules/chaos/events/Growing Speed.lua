@@ -1,7 +1,6 @@
--- Speed increases every second
-
 return {
 	title = 'Growing Speed',
+	description = 'Party movement speed grows every second',
 	chance = 10,
 	speed = 384,
 	onSecond = function(self)

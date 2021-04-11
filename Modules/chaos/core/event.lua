@@ -5,7 +5,6 @@ local event = {
 	onEnd = function() end, -- remove the effect after event has finished
 	onMinute = function() end, -- called every in-game minute
 	onSecond = function() end, -- called every in-game second
-	loop = false,
 	chance = 0,
 	new = function(self, o)
 			o = o or {}
