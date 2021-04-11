@@ -1,7 +1,7 @@
 local timer = {
 	timer = 0,
-	timerMax = 30,
-	paused = true,
+	timerMax = 10,
+	paused = false,
 }
 
 timer.init = function(self)
