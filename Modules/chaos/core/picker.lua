@@ -1,4 +1,3 @@
-local util = require('chaos.core.util')
 local BaseEvent = require('chaos.core.event')
 local picker = {
 	events = {},
@@ -15,10 +14,11 @@ end
 
 picker.loadEvents = function(self)
 	local events = {}
-	for path in _G.path.find(AppPath .. "scripts/modules/chaos/events/*.lua") do
-		local filename = util.getFilenameFromPath(path)
-		path = 'chaos.events.'  .. filename
-		local newEvent = require(path)
+	for s in path.find(AppPath .. "scripts/modules/chaos/events/*.lua") do
+		local filename = path.name(s)
+		filename = filename:sub(0, #filename - 4)
+		s = 'chaos.events.'  .. filename
+		local newEvent = require(s)
 		newEvent.filename = filename
 		newEvent = BaseEvent:new(newEvent)
 		table.insert(events, newEvent)

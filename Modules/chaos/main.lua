@@ -16,8 +16,13 @@ function chaos.onCycle(self)
 	chaosPicker:beginCurrentEvent()
 end
 
-function chaos.onTick(self)
+function chaos.onMinute(self)
 	chaosStatus:update()
+	chaosPicker.eventCurrent:onMinute()
+end
+
+function chaos.onSecond(self)
+	chaosPicker.eventCurrent:onSecond()
 end
 
 return chaos

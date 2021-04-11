@@ -1,6 +1,6 @@
 local timer = {
 	timer = 0,
-	timerMax = 3,
+	timerMax = 30,
 	paused = true,
 }
 
@@ -9,6 +9,9 @@ timer.init = function(self)
 		Timer(function()
 			self:count()
 		end, const.Minute)
+		Timer(function()
+			self:tick()
+		end, const.Second)
 	end
 end
 
@@ -19,7 +22,13 @@ timer.count = function(self)
 			self:loop()
 			chaos:onCycle()
 		end
-		chaos:onTick()
+		chaos:onMinute()
+	end
+end
+
+timer.tick = function(self)
+	if(self.paused == false) then
+		chaos:onSecond()
 	end
 end
 

@@ -1,5 +1,5 @@
 local debug = {
-	eventFilename = 'Double Speed',
+	eventFilename = 'Growing Speed',
 	event = {},
 	began = false,
 }
