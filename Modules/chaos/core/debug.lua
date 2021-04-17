@@ -1,5 +1,5 @@
 local debug = {
-	eventFilename = 'Test',
+	eventFilename = 'No AI',
 	event = {},
 	began = false,
 }
